@@ -1,6 +1,9 @@
-/data
-/dump
-/intermediate
+data/
+dump/
+
+intermediate/gaseous_aqi.csv
+intermediate/particulate_aqi.csv
+intermediate/filtered_fire_features.geojson
 
 .env
 
