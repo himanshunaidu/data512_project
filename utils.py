@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import geopandas as gpd
 import contextily as cx
 import folium.folium
-
+ 
 from matplotlib.colors import rgb2hex
 from matplotlib.patches import Patch
 from geopandas.explore import _categorical_legend
