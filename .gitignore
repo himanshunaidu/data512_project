@@ -1,12 +1,7 @@
 data/
 dump/
 
-intermediate/gaseous_aqi.csv
-intermediate/particulate_aqi.csv
-intermediate/filtered_fire_features.geojson
-intermediate/filtered_fire_features_val_2.geojson
-intermediate/wildfire_smoke_estimates.json
-intermediate/Fire_Feature_Distances.csv
+intermediate/
 
 .env
 

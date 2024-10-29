@@ -65,10 +65,24 @@ The project uses the dotenv package to load credentials (mainly for the AQS API,
 
 The repository has a file called '.env.example' that you can copy to '.env' and fill in the values with your own credentials. 
 
+### Data Setup
+
+1. Add the GeoDatabase file in the following path:\
+`./data/Fire_Feature/Fire_Feature_Data.gdb`
+
+2. Create the following sub-folders in the root folder.
+- intermediate
+- final
+
 
 ### Running the Notebook
 
-The notebook does not need any additional configuration. Thus, you can run the code using the 'Run All' option.
+The notebooks do not need any additional configuration. Thus, you can run the code using the 'Run All' option.
+
+Run the notebooks in the following order:
+1. [wildfire_data_acquisition.ipynb](wildfire_data_acquisition.ipynb)
+2. [aqi_data_acquisition.ipynb](aqi_data_acquisition.ipynb)
+3. [wildfire_data_analysis.ipynb](wildfire_data_analysis.ipynb)
 
 The entire code base takes ~15 minutes to run on the system used to develop this project, with the main bottleneck being the Geospatial Processing of the GeoDataFrame objects created from USGS Wildland Fire data.
 
@@ -79,5 +93,24 @@ Note: The system used to develop this project is equipped with a 12th Gen IntelÂ
 
 ### Source Data
 
+#### WildLand Fire Data
+
+The cleaned and organized wildfire data used in this project was provided by the [Combined wildland fire datasets for the United States and certain territories, 1800s-Present (combined wildland fire polygons](https://www.sciencebase.gov/catalog/item/61aa537dd34eb622f699df81). The final geospatial dataset contains both a raw, merged dataset with duplicates and a "combined" dataset that is duplicate-free. This combined dataset includes both wildfires and prescribed fires from the mid-1800s to 2021, compiled from 40 original wildfire datasets. For analysis, we will use only the combined dataset located at [./data/Fire_Feature/Fire_Feature_Data.gdb](data/Fire_Feature/Fire_Feature_Data.gdb). Due to its large size, this file is not tracked on Git and is therefore unavailable in this repository.
+
+The data is listed as public and can be cited as the following:
+
+Welty, J.L., and Jeffries, M.I., 2021, Combined wildland fire datasets for the United States and certain territories, 1800s-Present: U.S. Geological Survey data release, https://doi.org/10.5066/P9ZXGFY3.
+
+##### GeoPandas Usage
+
+Instead of the GeoJSON file, we ended up using the ArcGIS GeoDatabase file (Wildland Fire Polygons Fire Feature Data ArcGIS Pro 2.8 Geodatabase). 
+
+This is because GeoPandas had some issues with reading the GeoJSON file, mostly due to conversion issues that may have occurred while the authors translated the ArcGIS files to GeoJSON. GeoPandas has drivers to directly read the ArcGIS GeoDatabase files. 
 
 ### Output Data
+
+1. [aqi_annual_estimates.csv](./final/aqi_annual_estimates.csv)\
+This file ontains the final annual AQI estimates for Indianapolis, IN, during the fire season from 1971 to 2024. 
+
+2. [fire_annual_smoke_estimates.csv](./final/fire_annual_smoke_estimates.csv)\
+This file ontains the final calculated smoke estimates for Indianapolis, IN, during the fire season from 1964 to 2020. 
