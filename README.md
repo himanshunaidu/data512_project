@@ -1,0 +1,3 @@
+# WildLand Fire Analysis for Indianapolis, IN
+
+The purpose of this project is to examine the impact of wildfires on Indianapolis, IN. Specifically, we will analyze wildfire prevalence and air quality to assess smoke impacts over the past 60 years. A secondary objective is to build reproducibility and professional skills essential for conducting data-driven analysis, as part of the Autumn 2024 DATA 512 course at the University of Washington.
