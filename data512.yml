@@ -117,13 +117,14 @@ dependencies:
   - ncurses=6.5=he02047a_1
   - nest-asyncio=1.6.0=pyhd8ed1ab_0
   - networkx=3.4.2=pyhd8ed1ab_0
-  - numpy=2.1.1=py312h58c1407_0
+  - numpy=1.26.4=py312heda63a1_0
   - openjpeg=2.5.2=h488ebb8_0
   - openldap=2.6.8=hedd0468_0
   - openssl=3.3.2=hb9d3cd8_0
   - packaging=24.1=pyhd8ed1ab_0
   - pandas=2.2.3=py312hf9745cd_1
   - parso=0.8.4=pyhd8ed1ab_0
+  - patsy=0.5.6=pyhd8ed1ab_0
   - pcre2=10.44=hba22ea6_2
   - pexpect=4.9.0=pyhd8ed1ab_0
   - pickleshare=0.7.5=py_1003
@@ -154,9 +155,12 @@ dependencies:
   - requests=2.32.3=pyhd8ed1ab_0
   - scikit-learn=1.5.2=py312h7a48858_1
   - scipy=1.14.1=py312h62794b6_1
+  - seaborn=0.13.2=hd8ed1ab_2
+  - seaborn-base=0.13.2=pyhd8ed1ab_2
   - setuptools=75.1.0=pyhd8ed1ab_0
   - six=1.16.0=pyh6c4a22f_0
   - stack_data=0.6.2=pyhd8ed1ab_0
+  - statsmodels=0.14.4=py312hc0a28a1_0
   - threadpoolctl=3.5.0=pyhc1e730c_0
   - tk=8.6.13=noxft_h4845f30_101
   - tornado=6.4.1=py312h66e93f0_1
@@ -206,13 +210,14 @@ dependencies:
       - click-plugins==1.1.1
       - cligj==0.7.2
       - contextily==1.6.2
+      - cython==3.0.11
       - fiona==1.10.1
       - geographiclib==2.0
       - geopandas==1.0.1
       - geopy==2.4.1
       - mercantile==1.2.1
+      - pmdarima==2.0.4
       - pyogrio==0.10.0
       - pyproj==3.7.0
       - rasterio==1.4.1
       - shapely==2.0.6
-prefix: /home/hnaidu36/miniforge3/envs/data512
