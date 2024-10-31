@@ -67,7 +67,7 @@ The repository has a file called '.env.example' that you can copy to '.env' and 
 
 ### Data Setup
 
-1. 2. Create the following sub-folders in the root folder.
+1. Create the following sub-folders in the root folder.
 - data
 - intermediate
 
