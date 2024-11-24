@@ -67,12 +67,16 @@ The repository has a file called '.env.example' that you can copy to '.env' and 
 
 ### Data Setup
 
-1. Create the following sub-folders in the root folder.
-- data
-- intermediate
+1. Download and unzip the ArcGIS Geodatabase file from the Wildland Fire Source Data
 
-2. Add the GeoDatabase file in the following path:\
-`./data/Fire_Feature/Fire_Feature_Data.gdb`
+Link: [Combined wildland fire datasets for the United States and certain territories, 1800s-Present (combined wildland fire polygons](https://www.sciencebase.gov/catalog/item/61aa537dd34eb622f699df81)
+
+File name (current): Fire_Feature_Data_Pro2_8_Geodatabase.zip
+Description: “Wildland Fire Polygons Fire Feature Data ArcGIS Pro 2.8 Geodatabase”
+
+2. Add the GeoDatabase file do the data folder
+
+Path: `./data/Fire_Feature/Fire_Feature_Data.gdb`
 
 
 ### Running the Notebook
