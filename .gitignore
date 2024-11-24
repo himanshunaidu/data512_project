@@ -1,7 +1,10 @@
-data/
+# data/
+# !data/.gitkeep
+
 dump/
 
-intermediate/
+# intermediate/
+# !intermediate/.gitkeep
 
 .env
 
