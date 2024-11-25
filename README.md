@@ -6,18 +6,7 @@ This project begins by extracting relevant information on wildfires in proximity
 
 ## How to Run
 
-The entire code of the project resides in the following 3 Jupyter notebooks
-- [wildfire_data_acquisition.ipynb](wildfire_data_acquisition.ipynb)\
-The goal of this notebook is to help with the overall wildland fire analysis for Indianapolis, Indiana, by loading the WildLand Fire data as a geopandas GeoDataFrame, filtering the wildfire observations to those that occurred in the last 60 years, and are within 650 miles of Indianapolis.\
-This notebook also performs the smoke estimation, which will be later compared to available AQI data, in the main analysis notebook. 
-- [aqi_data_acquisition.ipynb](aqi_data_acquisition.ipynb)\
-The goal of this notebook is to help with the overall wildland fire analysis for Indianapolis, Indiana, by loading the Air Quality Index (AQI) data.
-- [wildfire_data_analysis.ipynb](wildfire_data_analysis.ipynb)\
-The goal of this notebook is to perform the overall analysis wildland fires for Indianapolis, Indiana.
-
-
-In order to run the notebook, start by setting up the Conda environment, using the [data512.yml](data512.yml).
-
+In order to run the project, start by setting up the Conda environment, using the [data512.yml](data512.yml):
 
 ### Python Environment
 
@@ -81,14 +70,18 @@ Description: â€œWildland Fire Polygons Fire Feature Data ArcGIS Pro 2.8 Geodatab
 Path: `./data/Fire_Feature/Fire_Feature_Data.gdb`
 
 
-### Running the Notebook
+### Running the Notebooks
 
 The notebooks do not need any additional configuration. Thus, you can run the code using the 'Run All' option.
 
 Run the notebooks in the following order:
-1. [wildfire_data_acquisition.ipynb](wildfire_data_acquisition.ipynb)
-2. [aqi_data_acquisition.ipynb](aqi_data_acquisition.ipynb)
-3. [wildfire_data_analysis.ipynb](wildfire_data_analysis.ipynb)
+- [wildfire_data_acquisition.ipynb](wildfire_data_acquisition.ipynb)\
+The goal of this notebook is to help with the overall wildland fire analysis for Indianapolis, Indiana, by loading the WildLand Fire data as a geopandas GeoDataFrame, filtering the wildfire observations to those that occurred in the last 60 years, and are within 650 miles of Indianapolis.\
+This notebook also performs the smoke estimation, which will be later compared to available AQI data, in the main analysis notebook. 
+- [aqi_data_acquisition.ipynb](aqi_data_acquisition.ipynb)\
+The goal of this notebook is to help with the overall wildland fire analysis for Indianapolis, Indiana, by loading the Air Quality Index (AQI) data.
+- [wildfire_data_analysis.ipynb](wildfire_data_analysis.ipynb)\
+The goal of this notebook is to perform the overall analysis wildland fires for Indianapolis, Indiana.
 
 The entire code base takes ~15 minutes to run on the system used to develop this project, with the main bottleneck being the Geospatial Processing of the GeoDataFrame objects created from USGS Wildland Fire data.
 
@@ -101,7 +94,7 @@ Note: The system used to develop this project is equipped with a 12th Gen IntelÂ
 
 #### WildLand Fire Data
 
-The cleaned and organized wildfire data used in this project was provided by the [Combined wildland fire datasets for the United States and certain territories, 1800s-Present (combined wildland fire polygons](https://www.sciencebase.gov/catalog/item/61aa537dd34eb622f699df81). The final geospatial dataset contains both a raw, merged dataset with duplicates and a "combined" dataset that is duplicate-free. This combined dataset includes both wildfires and prescribed fires from the mid-1800s to 2021, compiled from 40 original wildfire datasets. For analysis, we will use only the combined dataset located at [./data/Fire_Feature/Fire_Feature_Data.gdb](data/Fire_Feature/Fire_Feature_Data.gdb). Due to its large size, this file is not tracked on Git and is therefore unavailable in this repository.
+The cleaned and organized wildfire data used in this project was provided by the [Combined wildland fire datasets for the United States and certain territories, 1800s-Present (combined wildland fire polygons](https://www.sciencebase.gov/catalog/item/61aa537dd34eb622f699df81). The final geospatial dataset contains both a raw, merged dataset with duplicates and a "combined" dataset that is duplicate-free. This combined dataset includes both wildfires and prescribed fires from the mid-1800s to 2021, compiled from 40 original wildfire datasets. For analysis, we will use only the combined dataset located at [./data/Fire_Feature/Fire_Feature_Data.gdb](data/Fire_Feature/Fire_Feature_Data.gdb). Due to its large size, this file is not tracked on Git and is therefore unavailable in this repository (instructions for inserting the file correctly have been given in [Data Setup](#data-setup)).
 
 Out of the 28 attributes present for each wildland fire in the geodatabase file, we utilize the following variables to get the relevant details:
 - `USGS_Assigned_ID`: A unique ID for each wildland fire.
@@ -211,10 +204,26 @@ The dataset can be downloaded from the given link in CSV format.
 FRED explicitly mentions that all data can be freely utilized, as long as one mentions FRED as the service from which the data was retrieved from, and keep note of the copyright notices that appear on the data with FRED. 
 Additional details for the terms of use can be found [here](https://fred.stlouisfed.org/legal/).
 
+
+### Intermediate Data
+
+#### Wildland Fire Data
+
+We store the wildland fire data used for further analysis in the following intermediate files:
+
+
+
+
 ### Output Data
 
 1. [aqi_annual_estimates.csv](./final/aqi_annual_estimates.csv)\
-This file ontains the final annual AQI estimates for Indianapolis, IN, during the fire season from 1971 to 2024. 
+This file contains the final annual AQI estimates for Indianapolis, IN, during the fire season from 1971 to 2024. 
+The file contains the following columns:
+- `year`: Year for the AQI estimate.
+- `aqi`: The annual estimate of the AQI for the year. 
 
 2. [fire_annual_smoke_estimates.csv](./final/fire_annual_smoke_estimates.csv)\
-This file ontains the final calculated smoke estimates for Indianapolis, IN, during the fire season from 1964 to 2020. 
+This file contains the final calculated smoke estimates for Indianapolis, IN, during the fire season from 1964 to 2020. 
+The file contains the following columns:
+- `Fire_Year`: Year for the smoke estimate.
+- `smoke_estimate_weighted`: The average smoke estimate for the year (the term _weighted is an artifact to signify that the estimate was calculated by doing a weighted sum of all the relevant fires for that year). 
