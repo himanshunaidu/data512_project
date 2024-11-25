@@ -67,7 +67,8 @@ Description: “Wildland Fire Polygons Fire Feature Data ArcGIS Pro 2.8 Geodatab
 
 2. Add the GeoDatabase file do the data folder
 
-Path: `./data/Fire_Feature/Fire_Feature_Data.gdb`
+(Rename folder to Fire_Feature)\
+Final Path: `./data/Fire_Feature`
 
 
 ### Running the Notebooks
