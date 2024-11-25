@@ -1,6 +1,8 @@
 # WildLand Fire Analysis for Indianapolis, IN
 
-The purpose of this project is to examine the impact of wildfires on Indianapolis, IN. Specifically, we will analyze wildfire prevalence and air quality to assess smoke impacts over the past 60 years.
+The purpose of this project is to examine the health impact of wildfires on Indianapolis, IN. More specically, we will be assessing the impact of wildre smoke on asthma. Smoke exposure from wildfires can have significant repercussions on public health, especially concerning respiratory conditions, making it a critical issue for the community. The primary aim is to assess the impact of smoke on respiratory health within the healthcare system, including potential changes in morbidity and mortality related to respiratory diseases.
+
+This project begins by extracting relevant information on wildfires in proximity of Indianapolis, IN, in the past 60 years. Then, using the fire data, we create annual estimates for wildfire smoke impact, that are also compared with corresponding AQI data. 
 
 ## How to Run
 
@@ -101,7 +103,7 @@ Note: The system used to develop this project is equipped with a 12th Gen IntelÂ
 
 The cleaned and organized wildfire data used in this project was provided by the [Combined wildland fire datasets for the United States and certain territories, 1800s-Present (combined wildland fire polygons](https://www.sciencebase.gov/catalog/item/61aa537dd34eb622f699df81). The final geospatial dataset contains both a raw, merged dataset with duplicates and a "combined" dataset that is duplicate-free. This combined dataset includes both wildfires and prescribed fires from the mid-1800s to 2021, compiled from 40 original wildfire datasets. For analysis, we will use only the combined dataset located at [./data/Fire_Feature/Fire_Feature_Data.gdb](data/Fire_Feature/Fire_Feature_Data.gdb). Due to its large size, this file is not tracked on Git and is therefore unavailable in this repository.
 
-Out of the attributes present for each wildland fire in the geodatabase file, we utilize the following variables to get the relevant details:
+Out of the 28 attributes present for each wildland fire in the geodatabase file, we utilize the following variables to get the relevant details:
 - `USGS_Assigned_ID`: A unique ID for each wildland fire.
 - `Assigned_Fire_Type`: The assigned type of the fire. Is one of following values: 'Wildfire', 'Likely Wildfire', 'Prescribed Fire', 'Unknown Likely Wildfire', and 'Unknown - Likely Prescribed Fire'.
 - `Fire_Year`: The year of the fire.
@@ -134,7 +136,17 @@ This analysis required historical Air Quality Index (AQI) data for Indianapolis,
 
 For this project, we accessed data via the US Environmental Protection Agency (EPA) Air Quality Service (AQS) API. The [documentation](https://aqs.epa.gov/aqsweb/documents/data_api.html) explains the available call parameters and includes sample calls.
 
-We used the highest daily average sensor readings from monitoring stations within Indianapolis, IN. These daily maximums were averaged over the fire season to create annual estimates for 1971-2024, as data prior to 1983 was unavailable. Identifying nearby stations requires the Federal Information Processing Series (FIPS) codes for the target city, county, and state, which we sourced [here](https://www.census.gov/library/reference/code-lists/ansi.html). 
+Out of the 32 attributes present for the aqi data, we utilize the following variables to get the relevant details:
+- `site_number`: Number assigned to the site that contains the aqi sensor.
+- `parameter_code`: 5-digit AQS parameter code assigned to the parameter being recorded.
+- `poc`: Used when there are multiple sensors measuring the same pollutant at a site.
+- `latitude`: Latitude of the sensor location.
+- `longitude`: Longitude of the sensor location.
+- `parameter`: Parameter being recorded. 
+- `date_local`: Date of the measurement of the parameter.
+- `aqi`: AQI value of the parameter. 
+
+We used the above attributes to get the highest daily average sensor readings from monitoring stations within Indianapolis, IN. These daily maximums were averaged over the fire season to create annual estimates for 1971-2024, as data prior to 1983 was unavailable. Identifying nearby stations requires the Federal Information Processing Series (FIPS) codes for the target city, county, and state, which we sourced [here](https://www.census.gov/library/reference/code-lists/ansi.html). 
 
 ### Output Data
 
