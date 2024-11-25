@@ -197,7 +197,7 @@ FRED is an online database that has more than 800,000 time series datasets from 
 From this database, we will be utilizing the ‘Age-adjusted premature death rate’ for Marion County.
 
 We can access the following dataset from the link:
-- CDC20N2U018097.csv:
+- CDC20N2UAA018097.csv:
 This CSV file contains all the aggregated data that is obtained from the link.
     - `Year`
     - `Count`
