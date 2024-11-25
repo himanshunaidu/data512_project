@@ -148,6 +148,69 @@ Out of the 32 attributes present for the aqi data, we utilize the following vari
 
 We used the above attributes to get the highest daily average sensor readings from monitoring stations within Indianapolis, IN. These daily maximums were averaged over the fire season to create annual estimates for 1971-2024, as data prior to 1983 was unavailable. Identifying nearby stations requires the Federal Information Processing Series (FIPS) codes for the target city, county, and state, which we sourced [here](https://www.census.gov/library/reference/code-lists/ansi.html). 
 
+#### Respiratory Health Data
+
+The following sources of data are utilized to extract respiratory health data in Indianapolis, IN. 
+
+1. [Global Burden of Disease (GBD)](https://vizhub.healthdata.org/gbd-results/)
+
+The data contained in this IHME (Institute for Health Metrics and Evaluation: Homepage) dashboard can be used to extract asthma-related raw counts and rates (per 10,000) for incidence (new cases), prevalence (total cases), and deaths, from 1999-2021. 
+The lowest level of granularity is state-level (Indiana).
+
+From the dashboard, we can get access to the following dataset:
+- IHME-GBD_2021_DATA-<uuid>.csv:
+This CSV file contains all the aggregated data that is obtained from the dashboard.
+    - `Measure`: (Deaths, Prevalence, Incidence)
+    - `Metric`: (Percent, Rate, Number)
+    - `Year`
+    - `Value`
+    - `Upper`
+    - `Lower`
+
+The datasets can be downloaded from the dashboard in zipped CSV les. The data is governed by the 
+[IHME FREE-OF-CHARGE NON-COMMERCIAL USER AGREEMENT](https://www.healthdata.org/Data-tools-practices/data-practices/ihme-free-charge-non-commercial-user-agreement).
+
+2. [MCPHD Environmental Public Health Tracking Dashboard: Asthma](https://marionhealth.org/explore-data/)
+
+The data contained in this dashboard tracks asthma-related ED (Emergency Department) visits and hospitalizations from 2016 - 2023. 
+The main reason for the limited window of data is the fact that Marion County was only recently awarded a grant by the CDC (Centers for Disease Control and Prevention), in 2022. 
+
+From the dashboard, we can get access to the following datasets:
+- Asthma_ED_Yearly.csv:
+Tracks the ED visits for asthma from 2018 - 2023.
+    - `Year`
+    - `ObservedEvents`
+    - `CrudeRate`
+    - `AgeAdjustedRatePer10K`
+    - `AgeAdjustedLowerCL`
+    - `AgeAdjustedUpperCL`
+
+- Asthma_Hosp_Yearly.csv:
+Tracks the Hospitalizations for asthma from 2016-2018
+    - `Year`
+    - `ObservedEvents`
+    - `CrudeRate`
+    - `AgeAdjustedRatePer10K`
+    - `LowerCL`
+    - `UpperCL`
+
+The datasets can be downloaded in separate CSV files.
+
+3. [Federal Reserve Economic Database (FRED)](https://fred.stlouisfed.org/series/CDC20N2U013197)
+
+FRED is an online database that has more than 800,000 time series datasets from various sources. 
+From this database, we will be utilizing the ‘Age-adjusted premature death rate’ for Marion County.
+
+We can access the following dataset from the link:
+- CDC20N2U013197.csv:
+This CSV file contains all the aggregated data that is obtained from the link.
+    - `Year`
+    - `Count`
+ 
+The dataset can be downloaded from the given link in CSV format. 
+FRED explicitly mentions that all data can be freely utilized, as long as one mentions FRED as the service from which the data was retrieved from, and keep note of the copyright notices that appear on the data with FRED. 
+Additional details for the terms of use can be found [here](https://fred.stlouisfed.org/legal/).
+
 ### Output Data
 
 1. [aqi_annual_estimates.csv](./final/aqi_annual_estimates.csv)\
