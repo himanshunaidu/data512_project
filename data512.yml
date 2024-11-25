@@ -221,3 +221,4 @@ dependencies:
       - pyproj==3.7.0
       - rasterio==1.4.1
       - shapely==2.0.6
+prefix: /home/hnaidu36/miniforge3/envs/data512_clone
