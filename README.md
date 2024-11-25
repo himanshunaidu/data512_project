@@ -101,6 +101,23 @@ Note: The system used to develop this project is equipped with a 12th Gen IntelÂ
 
 The cleaned and organized wildfire data used in this project was provided by the [Combined wildland fire datasets for the United States and certain territories, 1800s-Present (combined wildland fire polygons](https://www.sciencebase.gov/catalog/item/61aa537dd34eb622f699df81). The final geospatial dataset contains both a raw, merged dataset with duplicates and a "combined" dataset that is duplicate-free. This combined dataset includes both wildfires and prescribed fires from the mid-1800s to 2021, compiled from 40 original wildfire datasets. For analysis, we will use only the combined dataset located at [./data/Fire_Feature/Fire_Feature_Data.gdb](data/Fire_Feature/Fire_Feature_Data.gdb). Due to its large size, this file is not tracked on Git and is therefore unavailable in this repository.
 
+Out of the attributes present for each wildland fire in the geodatabase file, we utilize the following variables to get the relevant details:
+- `USGS_Assigned_ID`: A unique ID for each wildland fire.
+- `Assigned_Fire_Type`: The assigned type of the fire. Is one of following values: 'Wildfire', 'Likely Wildfire', 'Prescribed Fire', 'Unknown Likely Wildfire', and 'Unknown - Likely Prescribed Fire'.
+- `Fire_Year`: The year of the fire.
+- `Listed_Fire_Dates`: Contains a list of dates related to major events related to the specific wildland fire. Can contain dates such as 'Listed Ignition Date(s)', 'Prescribed Fire Start Date', 'Listed Wildfire Controlled Date(s)', 'Prescribed Fire End Date', but there is no specific schema to adhere. This column was used to extract possible start and end dates of the fire.
+- `Shape_Length`: A system-generated field that automatically calculates and populates the length of the longest section in the polygon.
+- `Shape_Area`: A system-generated field that automatically calculates and populates the area of the polygon.
+
+We focus on a select subset of Wildland fires that satisfy the following conditions:
+- Occurred in the last 60 years: [1964 - Present]:\
+This is straightforward to filter and is intended to avoid potentially inaccurate data collected prior to the advent of satellite imaging
+- Within 650 miles of Indianapolis, IN:\
+We designate (39.7684, -86.1580) as the latitude and longitude coordinates representing the center of Indianapolis.\
+For distance calculation, we go with `EPSG:5070` (Conus Albers / USA Contiguous Albers Equal Area Conic). This CRS is indeed well-suited for the contiguous United States and designed specifically to minimize distortion for both area and distance across this region.
+- Occurred in the fire season (1st May - 31st October):\
+We utilized the `Listed_Fire_Dates` attribute in the database to get the possible start and end dates for each wildland fire, and filtered out those that did not have an overlap with the fire season. 
+
 The data is listed as public and can be cited as the following:
 
 Welty, J.L., and Jeffries, M.I., 2021, Combined wildland fire datasets for the United States and certain territories, 1800s-Present: U.S. Geological Survey data release, https://doi.org/10.5066/P9ZXGFY3.
