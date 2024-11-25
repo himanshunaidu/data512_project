@@ -209,10 +209,38 @@ Additional details for the terms of use can be found [here](https://fred.stlouis
 
 #### Wildland Fire Data
 
-We store the wildland fire data used for further analysis in the following intermediate files:
+We store the wildland fire data used for further analysis, in the following intermediate files:
+
+1. [Fire_Feature_Distances.csv](./intermediate/Fire_Feature_Distances.csv)\
+This csv file contains the distance of each wildland fire from Indianapolis, IN. The information from this file will be used to get the relevant subset of wildland fires to be used for further analysis. \
+Due to its large size, this file is not tracked on Git, however, this can easily be created by running the notebook [wildfire_data_acquisition.ipynb](wildfire_data_acquisition.ipynb).\
+Columns of note:
+    - `Distance`: Distance of the wildland fire from Indianapolis.
+
+2. [filtered_fire_features.geojson](./intermediate/filtered_fire_features.geojson)\
+This geojson file contains the relevant subset of the wildland fires that will be used to calculate smoke estimates and perform further analysis. 
+Due to its large size, this file is not tracked on Git, however, this can easily be created by running the notebook [wildfire_data_acquisition.ipynb](wildfire_data_acquisition.ipynb). \
+Same schema as the source wildland fire file from [Wildland Fire Data](#wildland-fire-data)
+
+3. [wildfire_smoke_estimates.json](./intermediate/wildfire_smoke_estimates.json)\
+This json file contains the smoke estimates for each wildland fire, which will eventually be used to calculate overall smoke estimates. \
+Due to its large size, this file is not tracked on Git, however, this can easily be created by running the notebook [wildfire_data_acquisition.ipynb](wildfire_data_acquisition.ipynb).\
+Attributes of note:
+    - `Fire_First_Date`: Estimated start date of the fire.
+    - `Fire_Last_Date`: Estimated last date of the fire.
+    - `smoke_estimate`: Smoke estimate of the fire. 
 
 
+#### Air Quality Index Data
 
+We store aqi-related data for further analysis, in the following file:
+
+1. [aqi_daily_estimates.csv](./intermediate/aqi_daily_estimates.csv)\
+This file contains the AQI estimate for each day in Indianapolis. This data will be further used to calculate the annual AQI estimates. 
+The file contains the following columns:
+- `date_local`: Date for the AQI estimate. 
+- `aqi`: The annual estimate of the AQI for the year. 
+- `year`: Year for the AQI estimate.
 
 ### Output Data
 
