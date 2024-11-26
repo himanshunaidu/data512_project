@@ -156,10 +156,8 @@ From the dashboard, we can get access to the following dataset:
 This CSV file contains all the aggregated data that is obtained from the dashboard.
     - `Measure`: (Deaths, Prevalence, Incidence)
     - `Metric`: (Percent, Rate, Number)
-    - `Year`
-    - `Value`
-    - `Upper`
-    - `Lower`
+    - `Year`: Year in which the measured incident occurred.
+    - `Value`: Value of the measurement according to the metric.
 
 The datasets can be downloaded from the dashboard in zipped CSV les. The data is governed by the 
 [IHME FREE-OF-CHARGE NON-COMMERCIAL USER AGREEMENT](https://www.healthdata.org/Data-tools-practices/data-practices/ihme-free-charge-non-commercial-user-agreement).
@@ -172,22 +170,13 @@ The main reason for the limited window of data is the fact that Marion County wa
 From the dashboard, we can get access to the following datasets:
 - Asthma_ED_Yearly.csv / COPD_ED_Yearly.csv:
 Tracks the ED visits for asthma from 2018 - 2023.
-    - `Year`
-    - `ObservedEvents`
-    - `CrudeRate`
-    - `AgeAdjustedRatePer10K`
-    - `AgeAdjustedLowerCL`
-    - `AgeAdjustedUpperCL`
+    - `Year`: Year for which the number of ED visits is being measured. 
+    - `AgeAdjustedRatePer10K`: Number of ED visits per 10,000 people. 
 
 - Asthma_Hosp_Yearly.csv / COPD_Hosp_Yearly.csv:
 Tracks the Hospitalizations for asthma from 2016-2018
-    - `Year`
-    - `ObservedEvents`
-    - `CrudeRate`
-    - `AgeAdjustedRatePer10K`
-    - `LowerCL`
-    - `UpperCL`
-
+    - `Year`: Year for which the number of hospitalizations is being measured. 
+    - `AgeAdjustedRatePer10K`: Number of hospitalizations per 10,000 people. 
 
 
 The datasets can be downloaded in separate CSV files.
@@ -195,14 +184,19 @@ The datasets can be downloaded in separate CSV files.
 3. [Federal Reserve Economic Database (FRED)](https://fred.stlouisfed.org/series/CDC20N2U018097)
 
 FRED is an online database that has more than 800,000 time series datasets from various sources. 
-From this database, we will be utilizing the ‘Age-adjusted premature death rate’ for Marion County.
+From this database, we will be utilizing the ‘Age-adjusted premature death rate’ for Marion County and Indiana.
 
 We can access the following dataset from the link:
 - CDC20N2UAA018097.csv:
-This CSV file contains all the aggregated data that is obtained from the link.
-    - `Year`
-    - `Count`
- 
+This CSV file contains all the aggregated data for the age-adjusted premature deaths in Marion County that is obtained from the link.
+    - `Year`: Year for which the number of premature deaths is being measured. 
+    - `Count`: Number of premature deaths
+
+- CDC20N2UAA042063.csv:
+This CSV file contains all the aggregated data for the age-adjusted premature deaths in Indiana that is obtained from the link.
+    - `Year`: Year for which the number of premature deaths is being measured. 
+    - `Count`: Number of premature deaths
+
 The dataset can be downloaded from the given link in CSV format. 
 FRED explicitly mentions that all data can be freely utilized, as long as one mentions FRED as the service from which the data was retrieved from, and keep note of the copyright notices that appear on the data with FRED. 
 Additional details for the terms of use can be found [here](https://fred.stlouisfed.org/legal/).
