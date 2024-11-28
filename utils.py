@@ -60,6 +60,7 @@ def plot_gdf(gdf: gpd.GeoDataFrame, column: str, cmap: str = 'viridis', title: s
 
     # Set title
     ax.set_title(title, fontdict = {'fontsize': '20', 'fontweight' : '4'})
+    ax.get_legend().remove()
 
     return fig, ax
 

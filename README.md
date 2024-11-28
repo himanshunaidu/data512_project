@@ -251,4 +251,4 @@ The file contains the following columns:
 This file contains the final calculated smoke estimates for Indianapolis, IN, during the fire season from 1964 to 2020. 
 The file contains the following columns:
 - `Fire_Year`: Year for the smoke estimate.
-- `smoke_estimate_weighted`: The average smoke estimate for the year (the term _weighted is an artifact to signify that the estimate was calculated by doing a weighted sum of all the relevant fires for that year). 
+- `smoke_estimate_annual`: The average smoke estimate for the year (the term _weighted is an artifact to signify that the estimate was calculated by doing a weighted sum of all the relevant fires for that year). 
