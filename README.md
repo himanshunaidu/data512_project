@@ -1,8 +1,10 @@
 # WildLand Fire Analysis for Indianapolis, IN
 
-The purpose of this project is to examine the health impact of wildfires on Indianapolis, IN. More specically, we will be assessing the impact of wildre smoke on respiratory health. Smoke exposure from wildfires can have significant repercussions on public health, especially concerning respiratory conditions, making it a critical issue for the community. The primary aim is to assess the impact of smoke on respiratory health within the healthcare system, including potential changes in morbidity and mortality related to respiratory diseases.
+The purpose of this project is to examine the health impact of wildfires on Indianapolis, IN. More specically, we will be assessing the impact of wildre smoke on respiratory health. Smoke exposure from wildfires can have significant repercussions on public health, especially concerning respiratory conditions, making it a critical issue for the community. The primary aim is to assess the impact of smoke on respiratory health within the healthcare system, including potential changes in morbidity and mortality related to respiratory diseases. The respiratory diseases of interest for this analysis are Asthma and COPD. 
 
-This project begins by extracting relevant information on wildfires in proximity of Indianapolis, IN, in the past 60 years. Then, using the fire data, we create annual estimates for wildfire smoke impact, that are also compared with corresponding AQI data. 
+Using data available at the state-level, we approximate the impact of wildland fire smoke on respiratory health on the city. Based on our smoke estimates and past trends in asthma and COPD, we notice a few interesting trends. For asthma, our results indicate that while Asthma incidence is expected to keep decreasing, the Asthma death rates are expected to slightly rise in the coming years. This comes off as quite surprising, as the initial intuition is that due to advances in medicine, Asthma should not prove as fatal in the coming years. For COPD on the other hand, both the incidence rate and death rate have been increasing over time, and these rates are expected to continue to increase, albeit at a lower rate in the coming years. 
+
+This project's secondary objective is for students in the University of Washington's Autumn 2024 DATA 512 course to acquire the professionalism and repeatability skills necessary for practical data-driven analysis.
 
 ## How to Run
 
@@ -75,7 +77,7 @@ Final Path: `./data/Fire_Feature`
 
 The notebooks do not need any additional configuration. Thus, you can run the code using the 'Run All' option.
 
-Run the notebooks in the following order:
+This project's code base is divided into the following notebooks for carrying out the analyses:
 - [wildfire_data_acquisition.ipynb](wildfire_data_acquisition.ipynb)\
 The goal of this notebook is to help with the overall wildland fire analysis for Indianapolis, Indiana, by loading the WildLand Fire data as a geopandas GeoDataFrame, filtering the wildfire observations to those that occurred in the last 60 years, and are within 650 miles of Indianapolis.\
 This notebook also performs the smoke estimation, which will be later compared to available AQI data, in the main analysis notebook. 
@@ -83,6 +85,12 @@ This notebook also performs the smoke estimation, which will be later compared t
 The goal of this notebook is to help with the overall wildland fire analysis for Indianapolis, Indiana, by loading the Air Quality Index (AQI) data.
 - [wildfire_data_analysis.ipynb](wildfire_data_analysis.ipynb)\
 The goal of this notebook is to perform the overall analysis wildland fires for Indianapolis, Indiana.
+- [healthcare_data_acquisition.ipynb](healthcare_data_acquisition.ipynb)\
+The goal of this notebook is to help with the overall wildland fire analysis for Indianapolis, Indiana, by loading and exploring all the healthcare data.
+The notebook also combines all the data into a single dataframe and save it for further analysis. 
+- [wildfire_healthcare_data_analysis.ipynb](wildfire_healthcare_data_analysis.ipynb)\
+This final notebook aims to examine the health impact of wildfires on Indianapolis, IN. More specically, in this notebook, we assess the impact of wildre smoke on respiratory health.
+We first perform an Expoloratory Data Analysis, by analysing the trends of the respiratory illness measures and their correlations with our smoke estimates. Finally, we utilize our current and forecasted smoke estimates along with the current respiratory illness data, to forecast the respiratory illness measures for the next 10 years. 
 
 The entire code base takes ~15 minutes to run on the system used to develop this project, with the main bottleneck being the Geospatial Processing of the GeoDataFrame objects created from USGS Wildland Fire data.
 
