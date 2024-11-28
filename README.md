@@ -235,20 +235,50 @@ We store aqi-related data for further analysis, in the following file:
 1. [aqi_daily_estimates.csv](./intermediate/aqi_daily_estimates.csv)\
 This file contains the AQI estimate for each day in Indianapolis. This data will be further used to calculate the annual AQI estimates. 
 The file contains the following columns:
-- `date_local`: Date for the AQI estimate. 
-- `aqi`: The annual estimate of the AQI for the year. 
-- `year`: Year for the AQI estimate.
+    - `date_local`: Date for the AQI estimate. 
+    - `aqi`: The annual estimate of the AQI for the year. 
+    - `year`: Year for the AQI estimate.
 
 ### Output Data
 
 1. [aqi_annual_estimates.csv](./final/aqi_annual_estimates.csv)\
 This file contains the final annual AQI estimates for Indianapolis, IN, during the fire season from 1971 to 2024. 
 The file contains the following columns:
-- `year`: Year for the AQI estimate.
-- `aqi`: The annual estimate of the AQI for the year. 
+    - `year`: Year for the AQI estimate.
+    - `aqi`: The annual estimate of the AQI for the year. 
 
 2. [fire_annual_smoke_estimates.csv](./final/fire_annual_smoke_estimates.csv)\
 This file contains the final calculated smoke estimates for Indianapolis, IN, during the fire season from 1964 to 2020. 
 The file contains the following columns:
-- `Fire_Year`: Year for the smoke estimate.
-- `smoke_estimate_annual`: The average smoke estimate for the year (the term _weighted is an artifact to signify that the estimate was calculated by doing a weighted sum of all the relevant fires for that year). 
+    - `Fire_Year`: Year for the smoke estimate.
+    - `smoke_estimate_annual`: The average smoke estimate for the year (the term _weighted is an artifact to signify that the estimate was calculated by doing a weighted sum of all the relevant fires for that year). 
+
+
+## Special Considerations and Known Issues
+
+1. Data Quality:
+
+None of the data sources contain asthma-related data for all the years for which we did the smoke estimates. While data from FRED and IHME GBD at least contain data of more than 20 years, the data for MCPHD is only for 3-5 years. Due to the insufficiency of the data available for Marion County, we had to acquiesce in the decision to perform analysis at the state level using the IHME and FRED data. \
+Fortunately this did not break any of our prior assumptions, thanks to the fact that Indianapolis is at the center of Indiana, with the maximum radius of the state not being more than 200 miles. Thus, the filtering of the wildfires according to distance was still valid. 
+
+2. Smoke Estimation Methodology:
+
+The approach to estimating the impact of smoke relies on a calculation method that incorporates the area of the fires, their distance from Indianapolis, and whether they are true wildfires or prescribed wildfires.
+
+$$\text{Smoke} = \beta_0 + \beta_1 \frac{\text{Area}}{\text{Distance}^2} + \beta_2 Fire\_Type + \beta_3 \frac{\text{Area}}{\text{Distance}^2} Fire\_Type$$
+
+For the given model, we will be giving the betas the following values (thus, accounting only for interaction among all the variables):
+- $\beta_0$ = 0
+- $\beta_1$ = 0
+- $\beta_2$ = 0
+- $\beta_3$ = 1
+
+While this approach establishes a base framework for our analysis, it does have certain limitations that we must consider and adjust for in our analysis.
+
+3. Weak correlation between Smoke Estimates and AQI levels
+
+While the AQI level data is not the source of truth for our analysis, since AQI levels are related to several factors unrelated to wildland fires, the weak correlation between our smoke estimates and the AQI levels do present a cause for concern. 
+
+4. Predictive Model Limitations
+
+Both the ARIMA and VARMAX models we employed for predictive analysis depend strongly on accurate historical data and assumes that future trends will reflect past patterns. This dependency presents a limitation, as the model may fail to capture unexpected changes or anomalies in future data, which could impact its predictive accuracy and reduce the reliability of our forecasts.
