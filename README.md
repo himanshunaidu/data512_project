@@ -4,6 +4,8 @@ The purpose of this project is to examine the health impact of wildfires on Indi
 
 Using data available at the state-level, we approximate the impact of wildland fire smoke on respiratory health on the city. Based on our smoke estimates and past trends in asthma and COPD, we notice a few interesting trends. For asthma, our results indicate that while Asthma incidence is expected to keep decreasing, the Asthma death rates are expected to slightly rise in the coming years. This comes off as quite surprising, as the initial intuition is that due to advances in medicine, Asthma should not prove as fatal in the coming years. For COPD on the other hand, both the incidence rate and death rate have been increasing over time, and these rates are expected to continue to increase, albeit at a lower rate in the coming years. 
 
+The final report of the project can be found [here](DATA_512_Final_Report.pdf).
+
 This project's secondary objective is for students in the University of Washington's Autumn 2024 DATA 512 course to acquire the professionalism and repeatability skills necessary for practical data-driven analysis.
 
 ## How to Run
