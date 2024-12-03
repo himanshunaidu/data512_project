@@ -263,6 +263,26 @@ The file contains the following columns:
     - `Fire_Year`: Year for the smoke estimate.
     - `smoke_estimate_annual`: The average smoke estimate for the year (the term _weighted is an artifact to signify that the estimate was calculated by doing a weighted sum of all the relevant fires for that year). 
 
+3. [forecasted_smoke_estimates.csv](./final/forecasted_smoke_estimates.csv)\
+This file contains the forecasted smoke estimates for Indianapolis, IN, for the next 25 years (2021 - 2045).
+The file contains the following columns:
+    - `Fire_Year`: Year for the smoke estimate.
+    - `smoke_estimate_annual`: The average smoke estimate for the year (the term _weighted is an artifact to signify that the estimate was calculated by doing a weighted sum of all the relevant fires for that year).
+
+4. [forecasted_asthma.csv](./final/forecasted_asthma.csv)\
+This file contains the forecasted asthma metrics for Indianapolis, IN, for the next 25 years (2021 - 2045).
+The file contains the following columns:
+    - `Year`: Year for the asthma metric.
+    - `Asthma_Incidence_Rate_State`: The forecasted asthma incidence rate for the year.
+    - `Asthma_Death_Rate_State`: The forecasted asthma death rate for the year.
+
+5. [forecasted_copd.csv](./final/forecasted_copd.csv)\
+This file contains the forecasted COPD metrics for Indianapolis, IN, for the next 25 years (2021 - 2045).
+The file contains the following columns:
+    - `Year`: Year for the asthma metric.
+    - `COPD_Incidence_Rate_State`: The forecasted COPD incidence rate for the year.
+    - `COPD_Death_Rate_State`: The forecasted COPD death rate for the year.
+
 
 ## Special Considerations and Known Issues
 
@@ -292,3 +312,14 @@ While the AQI level data is not the source of truth for our analysis, since AQI 
 4. Predictive Model Limitations
 
 Both the ARIMA and VARMAX models we employed for predictive analysis depend strongly on accurate historical data and assumes that future trends will reflect past patterns. This dependency presents a limitation, as the model may fail to capture unexpected changes or anomalies in future data, which could impact its predictive accuracy and reduce the reliability of our forecasts.
+
+
+## Conclusion
+
+This analysis explored the health impacts of wildfire smoke on the residents of Indianapolis, Indiana, with a particular focus on asthma and COPD-related health outcomes. By leveraging data from various sources, including wildfire occurrences, air quality indices, and state-level respiratory health statistics, the study sought to understand the trends and potential future implications of smoke exposure on public health. Using human-centered data science principles, the research aimed to inform policy and intervention strategies for the city's public health response.
+
+Key findings reveal a complex relationship between wildfire smoke estimates and respiratory health indicators. While the occurrence of wildfires and their associated smoke levels have increased over the past decades, correlations with state-level respiratory health metrics such as incidence and mortality rates were found to be weak. This suggests that other factors, including improved air quality control measures and advances in medical care, may be mitigating some of the potential health impacts in Indianapolis. Forecasting models predict a relatively stable trend in smoke estimates over the next 25 years, while certain respiratory outcomes, like asthma-related deaths, are projected to rise in the next 10 years, highlighting a need for targeted attention.
+
+The findings of this study have important implications for public health and policymaking. Policymakers should prioritize the protection of vulnerable populations, such as children, the elderly, and individuals with pre-existing respiratory conditions, by implementing targeted interventions and increasing community awareness during wildfire seasons. Additionally, sustained investments in air quality monitoring and proactive health data collection at the local level can enhance Indianapolis’s resilience against future environmental challenges.
+
+By applying a human-centered approach, this project demonstrates the value of integrating diverse data sources and analytical methods to address pressing public health issues. While the results serve as a foundational understanding of wildfire impacts in Indianapolis, they also highlight the need for continued research, collaboration, and action to safeguard the health and well-being of the city’s residents.
