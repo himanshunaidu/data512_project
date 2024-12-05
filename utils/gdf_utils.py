@@ -1,3 +1,12 @@
+"""
+This module contains utility functions to visualize Geodataframes.
+
+Functions:
+----------
+1. plot_gdf: Plot a GeoDataFrame with a specified column and colormap.
+
+2. explore_gdf: Explore a GeoDataFrame with a specified column and colormap.
+"""
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt

@@ -4,7 +4,7 @@ The purpose of this project is to examine the health impact of wildfires on Indi
 
 Using data available at the state-level, we approximate the impact of wildland fire smoke on respiratory health on the city. Based on our smoke estimates and past trends in asthma and COPD, we notice a few interesting trends. For asthma, our results indicate that while Asthma incidence is expected to keep decreasing, the Asthma death rates are expected to slightly rise in the coming years. This comes off as quite surprising, as the initial intuition is that due to advances in medicine, Asthma should not prove as fatal in the coming years. For COPD on the other hand, both the incidence rate and death rate have been increasing over time, and these rates are expected to continue to increase, albeit at a lower rate in the coming years. 
 
-The final report of the project can be found [here](DATA_512_Final_Report.pdf).
+The final report of the project can be found [here](reports/DATA_512_Final_Report.pdf).
 
 This project's secondary objective is for students in the University of Washington's Autumn 2024 DATA 512 course to acquire the professionalism and repeatability skills necessary for practical data-driven analysis.
 
@@ -43,9 +43,9 @@ Remember to deactivate the environment when you're done by running `conda deacti
 
 ### Get API Key for EPA AQS API
 
-Please note that an email is required to use the API. Steps for setting up the API Key were detailed in the notebook [aqi_data_acquisition.ipynb](aqi_data_acquisition.ipynb).
+Please note that an email is required to use the API. Steps for setting up the API Key were detailed in the notebook [2_aqi_data_acquisition.ipynb](2_aqi_data_acquisition.ipynb).
 
-Create an email address & request an API key using the EPA endpoint and run the function `request_signup` in [aqi_data_acquisition.ipynb](aqi_data_acquisition.ipynb)
+Create an email address & request an API key using the EPA endpoint and run the function `request_signup` in [2_aqi_data_acquisition.ipynb](2_aqi_data_acquisition.ipynb)
 
 
 ### Environment File for Credentials
@@ -80,19 +80,26 @@ Final Path: `./data/Fire_Feature`
 The notebooks do not need any additional configuration. Thus, you can run the code using the 'Run All' option.
 
 This project's code base is divided into the following notebooks for carrying out the analyses:
-- [wildfire_data_acquisition.ipynb](wildfire_data_acquisition.ipynb)\
+- [1_wildfire_data_acquisition.ipynb](1_wildfire_data_acquisition.ipynb)\
 The goal of this notebook is to help with the overall wildland fire analysis for Indianapolis, Indiana, by loading the WildLand Fire data as a geopandas GeoDataFrame, filtering the wildfire observations to those that occurred in the last 60 years, and are within 650 miles of Indianapolis.\
 This notebook also performs the smoke estimation, which will be later compared to available AQI data, in the main analysis notebook. 
-- [aqi_data_acquisition.ipynb](aqi_data_acquisition.ipynb)\
+- [2_aqi_data_acquisition.ipynb](2_aqi_data_acquisition.ipynb)\
 The goal of this notebook is to help with the overall wildland fire analysis for Indianapolis, Indiana, by loading the Air Quality Index (AQI) data.
-- [wildfire_data_analysis.ipynb](wildfire_data_analysis.ipynb)\
+- [3_wildfire_data_analysis.ipynb](3_wildfire_data_analysis.ipynb)\
 The goal of this notebook is to perform the overall analysis wildland fires for Indianapolis, Indiana.
-- [healthcare_data_acquisition.ipynb](healthcare_data_acquisition.ipynb)\
+- [4_healthcare_data_acquisition.ipynb](4_healthcare_data_acquisition.ipynb)\
 The goal of this notebook is to help with the overall wildland fire analysis for Indianapolis, Indiana, by loading and exploring all the healthcare data.
 The notebook also combines all the data into a single dataframe and save it for further analysis. 
-- [wildfire_healthcare_data_analysis.ipynb](wildfire_healthcare_data_analysis.ipynb)\
-This final notebook aims to examine the health impact of wildfires on Indianapolis, IN. More specically, in this notebook, we assess the impact of wildre smoke on respiratory health.
+- [5_wildfire_healthcare_data_analysis.ipynb](5_wildfire_healthcare_data_analysis.ipynb)\
+This final notebook aims to examine the health impact of wildfires on Indianapolis, IN. More specically, in this notebook, we assess the impact of wildre smoke on respiratory health.\
 We first perform an Expoloratory Data Analysis, by analysing the trends of the respiratory illness measures and their correlations with our smoke estimates. Finally, we utilize our current and forecasted smoke estimates along with the current respiratory illness data, to forecast the respiratory illness measures for the next 10 years. 
+
+### Overall Codebase
+
+- [utils](utils/)\
+This module contains some utility functions to be used by the notebooks. 
+    - [gdf_utils.py](utils/gdf_utils.py)\
+    This sub-module contains functions to visualize Geodataframes. 
 
 The entire code base takes ~15 minutes to run on the system used to develop this project, with the main bottleneck being the Geospatial Processing of the GeoDataFrame objects created from USGS Wildland Fire data.
 
@@ -220,18 +227,18 @@ We store the wildland fire data used for further analysis, in the following inte
 
 1. [Fire_Feature_Distances.csv](./intermediate/Fire_Feature_Distances.csv)\
 This csv file contains the distance of each wildland fire from Indianapolis, IN. The information from this file will be used to get the relevant subset of wildland fires to be used for further analysis. \
-Due to its large size, this file is not tracked on Git, however, this can easily be created by running the notebook [wildfire_data_acquisition.ipynb](wildfire_data_acquisition.ipynb).\
+Due to its large size, this file is not tracked on Git, however, this can easily be created by running the notebook [1_wildfire_data_acquisition.ipynb](1_wildfire_data_acquisition.ipynb).\
 Columns of note:
     - `Distance`: Distance of the wildland fire from Indianapolis.
 
 2. [filtered_fire_features.geojson](./intermediate/filtered_fire_features.geojson)\
 This geojson file contains the relevant subset of the wildland fires that will be used to calculate smoke estimates and perform further analysis. 
-Due to its large size, this file is not tracked on Git, however, this can easily be created by running the notebook [wildfire_data_acquisition.ipynb](wildfire_data_acquisition.ipynb). \
+Due to its large size, this file is not tracked on Git, however, this can easily be created by running the notebook [1_wildfire_data_acquisition.ipynb](1_wildfire_data_acquisition.ipynb). \
 Same schema as the source wildland fire file from [Wildland Fire Data](#wildland-fire-data)
 
 3. [wildfire_smoke_estimates.json](./intermediate/wildfire_smoke_estimates.json)\
 This json file contains the smoke estimates for each wildland fire, which will eventually be used to calculate overall smoke estimates. \
-Due to its large size, this file is not tracked on Git, however, this can easily be created by running the notebook [wildfire_data_acquisition.ipynb](wildfire_data_acquisition.ipynb).\
+Due to its large size, this file is not tracked on Git, however, this can easily be created by running the notebook [1_wildfire_data_acquisition.ipynb](1_wildfire_data_acquisition.ipynb).\
 Attributes of note:
     - `Fire_First_Date`: Estimated start date of the fire.
     - `Fire_Last_Date`: Estimated last date of the fire.
