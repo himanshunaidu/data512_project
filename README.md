@@ -10,7 +10,7 @@ This project's secondary objective is for students in the University of Washingt
 
 ## How to Run
 
-In order to run the project, start by setting up the Conda environment, using the [data512.yml](data512.yml):
+In order to run the project, start by setting up the Conda environment, using the [data512.yml](data512.yml) (or [data512_osx.yml](data512_osx.yml) for macOS):
 
 ### Python Environment
 
