@@ -101,7 +101,7 @@ This module contains some utility functions to be used by the notebooks.
     - [gdf_utils.py](utils/gdf_utils.py)\
     This sub-module contains functions to visualize Geodataframes. 
 
-The entire code base takes ~15 minutes to run on the system used to develop this project, with the main bottleneck being the Geospatial Processing of the GeoDataFrame objects created from USGS Wildland Fire data.
+The entire code base takes ~30 minutes to run on the system used to develop this project, with the main bottleneck being the Geospatial Processing of the GeoDataFrame objects created from USGS Wildland Fire data.
 
 Note: The system used to develop this project is equipped with a 12th Gen Intel® Core™ i7-12700H processor (2.30 GHz)
 
